@@ -12,15 +12,20 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guarded = 'id';
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'age',
+        'phone_number',
+        'scope',
     ];
 
     /**
@@ -33,12 +38,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public static $rules = array('first_name' => 'required', 'last_name' => 'required', 'email' => 'required', 'password' => 'required', 'age' => 'required', 'phone_number' => 'required', 'scope' => 'required');
+
 }
