@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('age');
-            $table->integer('phone_number');
-            $table->integer('scope');
+            $table->string('phone_number');
+            $table->integer('scope')->default(0);
             $table->timestamps();
         });
     }
