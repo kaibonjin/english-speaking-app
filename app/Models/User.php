@@ -38,6 +38,4 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public static $rules = array('first_name' => 'required', 'last_name' => 'required', 'email' => 'required', 'password' => 'required', 'age' => 'required', 'phone_number' => 'required', 'scope' => 'required');
-
 }

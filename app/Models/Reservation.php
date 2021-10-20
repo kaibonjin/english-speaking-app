@@ -17,6 +17,4 @@ class Reservation extends Model
         'phone_number',
         'email',
     ];
-
-    public static $rules = array('user_id' => 'required', 'reservation_date' => 'required', 'phone_number' => 'required', 'email' => 'required');
 }
