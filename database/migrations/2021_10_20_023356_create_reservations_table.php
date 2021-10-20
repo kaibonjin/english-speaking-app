@@ -14,11 +14,11 @@ class CreateReservationsTable extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id');
-            $table->dateTime('reservation_date');
-            $table->string('email');
-            $table->string('phone_number');
+            $table->id()->comment('id');
+            $table->integer('user_id')->comment('ユーザーid');
+            $table->dateTime('reservation_date')->comment('予約日時');
+            $table->string('email')->comment('メールアドレス');
+            $table->string('phone_number')->comment('電話番号');
             $table->timestamps();
             $table->softDeletes();
         });
