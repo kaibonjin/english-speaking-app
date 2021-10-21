@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@section('head')
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+@endsection
 @section('content')
 <!-- ここにページ毎のコンテンツを書く -->
 <form method="POST" action="{{ route('register') }}" class="mt-5">
@@ -49,7 +52,6 @@
 
     <div class="form-group row">
         <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
-
         <div class="col-md-6">
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
@@ -58,6 +60,13 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
+        </div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-6">
+          <span id="passwordHelpInline" class="form-text">
+            英数字８〜２０文字
+          </span>
         </div>
     </div>
 
