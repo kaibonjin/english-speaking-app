@@ -1,4 +1,4 @@
 @extends('layouts.layout')
 @section('content')
-    トップページでる。
+    <a href="{{ url('/reservation') }}">無料カウンセリング</a>
 @endsection
