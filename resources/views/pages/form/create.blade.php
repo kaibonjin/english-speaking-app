@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 @endsection
 @section('content')
+
 <!-- ここにページ毎のコンテンツを書く -->
 <form method="POST" action="{{ route('register') }}" class="mt-5">
     @csrf
@@ -11,7 +12,7 @@
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('姓') }}</label>
 
         <div class="col-md-6">
-            <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
+            <input id="last_name" type="date" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
 
             @error('last_name')
                 <span class="invalid-feedback" role="alert">

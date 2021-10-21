@@ -8,6 +8,8 @@
 @endsection
 @section('content')
 
+@include('common.reservationForm')
+
 予約画面
 <form method="POST" action="/reservation" class="mt-5">
     @csrf
