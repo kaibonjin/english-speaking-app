@@ -1,11 +1,5 @@
 <?php
 
-<<<<<<< Updated upstream
-=======
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\ReservationController;
-use Illuminate\Support\Facades\Auth;
->>>>>>> Stashed changes
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< Updated upstream
-Route::get('/', function () {
-    return view('pages.index');
-});
-=======
 Route::get('/', [Controller::class, 'index']);
 Route::get('/reservation', [ReservationController::class, 'index']);
 
->>>>>>> Stashed changes
 
 Auth::routes();
