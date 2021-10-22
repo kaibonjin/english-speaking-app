@@ -10,17 +10,24 @@ class ReservationController extends Controller
 {
     public function index(Request $request)
     {
+        $prevMonth = -1;
+        $nextMonth = 1;
         $weeks = [];
-        
-        for ($i = 0; $i <= 6; $i++) {
-            array_push($weeks, \Carbon\Carbon::now()->addDays($i)->format("m/d"));
-        }
 
-        return view('pages.form.reservation.create',
-        [
-            'weeks' => $weeks,
-        ]
-        );
+        if (!$request->page) {
+            for ($i = 0; $i <= 6; $i++) {
+                array_push($weeks, \Carbon\Carbon::now()->addDays($i)->format("m/d"));
+            }
+            return view('pages.form.reservation.create', ['weeks' => $weeks, 'nextMonth' => $nextMonth, 'prevMonth' => $prevMonth, ]);
+        } else {
+            $page=$request->page;
+            $nextMonth=$page+1;
+            $prevMonth=$page-1;
+            for ($i = 0; $i <= 6; $i++) {
+                array_push($weeks, \Carbon\Carbon::now()->addDays($page * 7)->addDays($i)->format("m/d"));
+            }
+            return view('pages.form.reservation.create', ['weeks' => $weeks, 'nextMonth' => $nextMonth, 'prevMonth' => $prevMonth, ]);
+        }
     }
 
     public function create(Request $request)
@@ -36,4 +43,5 @@ class ReservationController extends Controller
         )->save();
 
     }
+
 }

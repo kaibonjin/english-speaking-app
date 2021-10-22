@@ -1,8 +1,9 @@
 <div class="container">
 
-        <a href="">◀︎前の一週間</a>
-
-        <a href="">次の一週間▶︎</a>
+        <div>
+            <a href="?page={{$prevMonth}}">前の週</a>
+            <a href="?page={{$nextMonth}}">次の週</a>
+        </div>
 
         <table class="table table-bordered">
             <tr>
