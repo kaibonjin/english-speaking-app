@@ -1,15 +1,15 @@
 <div class="container">
 
         <div>
-            <a href="?page={{$prevMonth}}">前の週</a>
-            <a href="?page={{$nextMonth}}">次の週</a>
+            <a href="?page={{$prevWeek}}">前の週</a>
+            <a href="?page={{$nextWeek}}">次の週</a>
         </div>
 
         <table class="table table-bordered">
             <tr>
               <th></th>
-              @foreach ($weeks as $week)
-                <th>{{ $week }}</th>
+              @foreach ($week as $day)
+                <th>{{ $day }}</th>
               @endforeach
             </tr>
             <tr>

@@ -2,32 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\CalendarFacade\CalendarFacade;
 use App\Models\Reservation;
+use App\Services\Calendar\CalendarService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
+    public function __construct(CalendarService $calendarService)
+    {
+        $this->calendarService = $calendarService;
+    }
+
     public function index(Request $request)
     {
-        $prevMonth = -1;
-        $nextMonth = 1;
-        $weeks = [];
+        return view ('pages.form.reservation.create', [
+            'week' => CalendarFacade::getWeek($request),
+            'nextWeek' => CalendarFacade::getWeekButton($request)['nextWeek'],
+            'prevWeek' => CalendarFacade::getWeekButton($request)['prevWeek']
+        ]);
 
-        if (!$request->page) {
-            for ($i = 0; $i <= 6; $i++) {
-                array_push($weeks, \Carbon\Carbon::now()->addDays($i)->format("m/d"));
-            }
-            return view('pages.form.reservation.create', ['weeks' => $weeks, 'nextMonth' => $nextMonth, 'prevMonth' => $prevMonth, ]);
-        } else {
-            $page=$request->page;
-            $nextMonth=$page+1;
-            $prevMonth=$page-1;
-            for ($i = 0; $i <= 6; $i++) {
-                array_push($weeks, \Carbon\Carbon::now()->addDays($page * 7)->addDays($i)->format("m/d"));
-            }
-            return view('pages.form.reservation.create', ['weeks' => $weeks, 'nextMonth' => $nextMonth, 'prevMonth' => $prevMonth, ]);
-        }
+        // $prevWeek = -1;
+        // $nextWeek = 1;
+        // $weeks = [];
+
+        // if (!$request->page) {
+        //     for ($i = 0; $i <= 6; $i++) {
+        //         array_push($weeks, Carbon::now()->addDays($i)->format("m/d"));
+        //     }
+        //     return view('pages.form.reservation.create', ['weeks' => $weeks, 'nextWeek' => $nextWeek, 'prevWeek' => $prevWeek, ]);
+        // } else {
+        //     $page=$request->page;
+        //     $nextWeek=$page+1;
+        //     $prevWeek=$page-1;
+        //     for ($i = 0; $i <= 6; $i++) {
+        //         array_push($weeks, Carbon::now()->addDays($page * 7)->addDays($i)->format("m/d"));
+        //     }
+        //     return view('pages.form.reservation.create', ['weeks' => $weeks, 'nextWeek' => $nextWeek, 'prevWeek' => $prevWeek, ]);
+        // }
     }
 
     public function create(Request $request)
