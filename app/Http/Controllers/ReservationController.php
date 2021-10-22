@@ -12,15 +12,10 @@ class ReservationController extends Controller
     {
         $weeks = [];
         
-
         for ($i = 0; $i <= 6; $i++) {
-            array_push($weeks,\Carbon\Carbon::now()->addDays($i)->format("m/d"));
+            array_push($weeks, \Carbon\Carbon::now()->addDays($i)->format("m/d"));
         }
 
-
-        
-
-        
         return view('pages.form.reservation.create',
         [
             'weeks' => $weeks,
